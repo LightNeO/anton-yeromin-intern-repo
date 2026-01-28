@@ -1,3 +1,21 @@
+# Reflections
+
+1. What steps can you take to ensure you handle data securely in your daily tasks?
+
+Use Synthetic Data: I script fake data for automated tests instead of using real customer database dumps.
+
+Sanitize Evidence: I remove PII or tokens from screenshots and logs before attaching them to Jira tickets.
+
+Git Safety: I strictly check that configuration files with secrets are listed in .gitignore before committing.
+
+2. How should you store, share, and dispose of sensitive information safely?
+
+Store: In local environment variables (.env) or a password manager, never hardcoded in the Python script.
+
+Share: Via one-time, self-destructing links (e.g., 1Password Share), never as plain text in Discord/Slack.
+
+Dispose: Delete local test logs and temporary data files immediately after the task is finished.
+
 # Identify at least one habit or practice you can adopt to improve data security in your role.
 
 I think it would be: never use hardcoded values for api keys, passwords, test data etc:
