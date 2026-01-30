@@ -92,3 +92,31 @@ Within a few minutes (and about 6-7 steps), I can pinpoint exactly which develop
 ## 3. How does it compare to manually reviewing commits?
 * **Manual Review:** This is slow and prone to error. If I have to check 100 commits, I might have to do 100 checks (Linear Time). I also might miss a subtle code change that caused the issue.
 * **Git Bisect:** This is exponentially faster (Logarithmic Time). For 100 commits, `bisect` only needs about **7 steps**. For 1,000 commits, it only needs about **10 steps**. It is the most efficient way to debug large history gaps.
+
+## 1. What makes a good commit message?
+A good commit message answers **"What"** and **"Why"** (the code itself shows the "How").
+Based on my research of the **Node.js** and **React** repositories, the industry standard follows the **Conventional Commits** structure:
+
+1.  **Subject Line (The "What"):**
+    * **Type:** `feat`, `fix`, `docs`, `test`, `chore`.
+    * **Scope:** The part of the app affected (e.g., `login`, `api`, `button`).
+    * **Description:** Short summary (under 50 chars), written in the **imperative mood** ("Add" not "Added").
+2.  **Body (The "Why"):**
+    * separated from the subject by a blank line.
+    * Explains the motivation for the change and contrasts it with previous behavior.
+3.  **Footer:** References to Jira tickets (e.g., `Closes JIRA-123`).
+
+**Example of a Perfect Structure:**
+`fix(auth): prevent crash when token is null`
+
+
+
+## 2. How does a clear commit message help in team collaboration?
+* **Faster Code Reviews:** The reviewer can read the message and know exactly what to look for in the code diff.
+* **Automated Changelogs:** If we use standard prefixes (like `feat:`), CI/CD tools can automatically generate release notes for the team.
+* **Context for Future Devs:** Six months from now, when we wonder *why* a strange `sleep(5)` was added to a test, the commit message explains the race condition that caused it.
+
+## 3. How can poor commit messages cause issues later?
+* **"Fixed stuff" syndrome:** If a bug appears, and I look at the history to see "fixed stuff", "update", and "wip", I have zero information. I have to open every single commit to understand what happened.
+* **Broken Bisect:** Vague messages make `git bisect` harder because I can't guess which range of commits might contain the error.
+* **Rollback Risks:** If I need to revert a specific change, a bad commit message might hide the fact that it contains three unrelated changes (e.g., a bug fix AND a library update), making it dangerous to revert.
