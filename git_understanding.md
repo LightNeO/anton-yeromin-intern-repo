@@ -12,3 +12,11 @@
 # When would you want to stage changes without committing?
  For partial commit - I can add only part of the file to staging area
  And for some sanity checks before commiting
+
+# Why is pushing directly to main problematic?
+ Possibility of broken builds, bypassing autotests CI/CD pipelines, many people + many commits = history mess
+# How do branches help with reviewing code?
+ Cannt do merge without pull request, specific context for each branch helps to understand code, easier to resolve conflicts
+# What happens if two people edit the same file on different branches?
+ IF they edited different lines/functions in different places - nothing specific
+ IF they edited same lines - will be a merge conflict
