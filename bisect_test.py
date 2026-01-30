@@ -3,3 +3,4 @@ def foo(a, b):
 
 
 print(foo(2, 3))
+print(foo(3, 3))
