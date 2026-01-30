@@ -66,3 +66,29 @@ What does it do?
 When would you use it in a real project?
     To check whom to blame when there is a bug
 
+
+## 1. What does `git bisect` do?
+`git bisect` is a debugging tool that uses a **Binary Search algorithm** to find the specific commit that introduced a bug.
+
+Instead of checking commits one by one (Linear Search), `git bisect` cuts the history in half.
+1.  I tell Git a "Bad" commit (where the bug exists).
+2.  I tell Git a "Good" commit (where the feature worked).
+3.  Git checks out the commit exactly in the middle.
+4.  I test that commit.
+    * If it works, the bug is in the *second* half.
+    * If it fails, the bug is in the *first* half.
+5.  Git repeats this "halving" process until only one commit remains—the culprit.
+
+
+
+## 2. When would you use it in a real-world debugging situation?
+I would use this for **Regression Testing**.
+**Scenario:** A critical test passed in the release 5 days ago (v1.0), but it is failing in the current build (v1.1). There have been 100 commits since then by 5 different developers.
+Instead of reading 100 diffs or guessing, I start `git bisect`.
+* **Good:** v1.0 tag.
+* **Bad:** HEAD (Current).
+Within a few minutes (and about 6-7 steps), I can pinpoint exactly which developer broke the build and assign the ticket to them with proof.
+
+## 3. How does it compare to manually reviewing commits?
+* **Manual Review:** This is slow and prone to error. If I have to check 100 commits, I might have to do 100 checks (Linear Time). I also might miss a subtle code change that caused the issue.
+* **Git Bisect:** This is exponentially faster (Logarithmic Time). For 100 commits, `bisect` only needs about **7 steps**. For 1,000 commits, it only needs about **10 steps**. It is the most efficient way to debug large history gaps.
