@@ -125,3 +125,19 @@ Based on my research of the **Node.js** and **React** repositories, the industry
 ### Some changes for testing Pull Requests
 ### 2 Some changes for testing Pull Requests
 ### 3 Some changes for testing Pull Requests
+
+
+## Why are PRs important in a team workflow?
+A Pull Request is not just a request to merge code; it is a Quality check.
+No code should reach production (or the main branch) without being seen by at least one other person. This catches logic errors, typos, and blind spots that the author missed.
+It ensures that more than one person understands how a feature works.
+PRs trigger automated tests(if they are set). If my code breaks the build, the PR blocks the merge automatically, keeping the `main` branch healthy.
+
+## What makes a well-structured PR?
+A good PR should provide a description of what it is about or what prombel is it solving
+
+
+## 3. What did you learn from reviewing an open-source PR?
+Strict Templates: Sometimes devs use a pre-filled "Template" that forces the author to check boxes (e.g., "I have run the tests," "I have updated docs"). This ensures nothing is forgotten.
+Polite & Constructive Feedback: The reviewers didn't just say "Fix this." They asked questions like, *"Would it be better if we handled this exception here?"* It felt like a collaboration, not an interrogation.
+Automated Bot Comments: I saw bots automatically commenting with test results or code coverage reports immediately after the code was pushed.
