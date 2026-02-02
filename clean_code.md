@@ -101,3 +101,27 @@ I used **Black** (the Python formatter). It automatically:
 * Fixed all my indentation.
 * Standardized string quotes (changed `'` to `"`).
 * Broke long lines into readable chunks.
+
+
+
+# 40
+
+## 1. What makes a good variable or function name?
+A good name answers three questions: **Why does it exist? What does it do? How is it used?**
+
+* **Descriptive & Pronounceable:** Use `customer_address` instead of `c_addr`. If you can't read it aloud in a meeting, it's a bad name.
+* **Follows Conventions (PEP 8):**
+    * **Variables/Functions:** `snake_case` (e.g., `calculate_tax`, `user_id`).
+    * **Classes:** `PascalCase` (e.g., `LoginPage`, `TestUser`).
+    * **Constants:** `UPPER_CASE` (e.g., `MAX_RETRIES = 3`).
+* **Booleans:** Should sound like a Yes/No question using prefixes like `is_`, `has_`, or `can_` (e.g., `is_visible`, `has_access`).
+* **Functions:** Should start with a **verb** because they perform actions (e.g., `get_user()`, `validate_email()`, `click_submit()`).
+
+## 2. What issues can arise from poorly named variables?
+* **Context Switching:** If I see `x = d + 5`, I have to stop reading, scroll up, find where `d` was defined, and decode it. This breaks my "flow."
+* **Misleading Logic:** A variable named `account_list` that actually contains a *dictionary* can cause bugs when another developer tries to iterate over it like a list.
+* **"Bus Factor" Risk:** If the only person who knows that `flag_2` means "Admin Mode" leaves the company, the knowledge is lost.
+
+## 3. How did refactoring improve code readability?
+Refactoring transformed the code from a "puzzle" into a "story"
+In the bad example, I had to read every line of logic to understand the goal. In the refactored version, I could understand the goal just by reading the function signature (`calculate_overtime_pay`). The code became self-documenting, removing the need for explanatory comments.
