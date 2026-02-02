@@ -166,3 +166,16 @@ I used the **Guard Clause** technique (Early Return).
 * **Linear Flow:** The code now reads like a checklist. "Is user null? Stop. Is user inactive? Stop. Okay, grant access."
 * **Flatter Structure:** The indentation level never goes deeper than 1 tab. This makes the code visually cleaner.
 * **Focus on the "Happy Path":** The main success logic is at the very end and is not indented, highlighting that it is the primary goal of the function.
+
+# 44
+
+## 1. When should you add comments?
+Comments are for **Context** and **Why**, not for explaining syntax.
+* **Complex Business Logic:** If a specific tax calculation looks weird but is legally required by "Law 123," write a comment citing the law.
+* **Workarounds:** If you had to write "ugly" code because of a bug in a library (e.g., *Selenium waits don't work here, so I added a strict sleep*), explain *why* so the next person doesn't delete it.
+* **Docstrings:** Public functions (especially in a framework) should always have a docstring explaining arguments and return values so users get IntelliSense hints. Also they could include test case summary or even steps
+
+## 2. When should you avoid comments and instead improve the code?
+* **Stating the Obvious:** `i = i + 1  # Increment i` is noise. The code already says that.
+* **Excusing Bad Code:** If you feel the need to write ` # Sorry this is messy, it parses the date`, you should just rewrite the code to be cleaner (or extract it into a function named `parse_date()`).
+* **Outdated Comments:** The only thing worse than no comments is a *lying* comment. If you change the code, you must update the comment. If you can't maintain both, delete the comment.
