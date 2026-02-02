@@ -139,3 +139,16 @@ Breaking code into small, single-purpose functions follows the **Single Responsi
 Refactoring moved the code from **Imperative** (explaining *how* to do things step-by-step) to **Declarative** (explaining *what* is happening).
 * **Before:** The main function was a "Wall of Text" containing validation logic, database queries, and email formatting all mixed together.
 * **After:** The main function became a "Table of Contents." It simply calls `validate_user()`, then `create_user()`, then `send_email()`. I can read the main function in 5 seconds and understand the entire workflow.
+
+# 42
+
+## 1. What were the issues with duplicated code?
+Duplicated code violates the **"Single Source of Truth"** rule.
+* **Maintenance Nightmare:** If I copy-paste a block of code 10 times and then find a bug in it, I have to fix it in 10 different places. If I miss one, the bug remains.
+* **Cognitive Load:** It bloats the file size. Reading 50 lines of repeated logic is harder than reading one function call.
+* **Inconsistency:** Over time, the copies tend to drift apart (e.g., one copy gets an update, the others don't), leading to confusing behavior where Feature A works but Feature B fails.
+
+## 2. How did refactoring improve maintainability?
+Refactoring extracted the repeated logic into a reusable helper function.
+* **Single Point of Change:** Now, if the API URL or the Authorization token format changes, I only need to update **one line** in the helper function. The change automatically propagates to all 50 tests that use it.
+* **Clarified Intent:** The test code now focuses on *what* is being tested (e.g., "Get User Orders"), rather than the low-level details of *how* to construct an HTTP header.
