@@ -1,3 +1,4 @@
+# 38
 ## 1. Core Principles
 
 ### Simplicity (KISS - Keep It Simple, Stupid)
@@ -79,3 +80,24 @@ def calculate_total_price(prices: list[float]) -> float:
             total += price
     return total
 ```
+
+# 39
+
+## 1. Why is code formatting important?
+Code formatting is not about aesthetics; it is about cognitive load
+* **Brain Power:** When code looks consistent, my brain stops processing *how* it looks (brackets, spaces) and focuses entirely on *what* it does (logic).
+* **Diff Readability:** If everyone formats code differently, a Code Review diff will show 100 changes just because someone added spaces. With a formatter, the diff shows only logic changes.
+* **Ending Arguments:** It stops "Bikeshedding" (pointless arguments about where to put braces). We just delegate those decisions to the tool.
+
+### 1.1. The Airbnb Style Guide (Research Summary)
+I reviewed the Airbnb JavaScript Style Guide, which is considered the "Gold Standard" in the industry. But as I understand from future tasks we'll be using Python for E2E testing, so I desided to dive diper into PEP8
+
+## 2. What issues did the linter detect?
+I'm using Flake8 and Black formater for VS Code, so it detects regular issue in writing a code: wrong imports, wrong variable namings, whitespaces etc. And also Alt+Shift+T for marmating make thing easier
+
+## 4. Did formatting the code make it easier to read?
+**Yes, immediately.**
+I used **Black** (the Python formatter). It automatically:
+* Fixed all my indentation.
+* Standardized string quotes (changed `'` to `"`).
+* Broke long lines into readable chunks.
