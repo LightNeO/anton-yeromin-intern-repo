@@ -152,3 +152,17 @@ Duplicated code violates the **"Single Source of Truth"** rule.
 Refactoring extracted the repeated logic into a reusable helper function.
 * **Single Point of Change:** Now, if the API URL or the Authorization token format changes, I only need to update **one line** in the helper function. The change automatically propagates to all 50 tests that use it.
 * **Clarified Intent:** The test code now focuses on *what* is being tested (e.g., "Get User Orders"), rather than the low-level details of *how* to construct an HTTP header.
+
+# 43
+
+## 1. What made the original code complex?
+The original code suffered from **Deep Nesting** (The "Arrow Head" anti-pattern).
+* **Cognitive Load:** To understand the success condition, I had to hold 3 layers of `if/else` logic in my head simultaneously.
+* **Separation of Logic:** The `else` statements were far away from their corresponding `if` statements. I had to scroll down to find out what happens if the user *isn't* active.
+* **Redundancy:** It used temporary variables (`result = ...`) unnecessarily, forcing me to track the state of that variable until the very end of the function.
+
+## 2. How did refactoring improve it?
+I used the **Guard Clause** technique (Early Return).
+* **Linear Flow:** The code now reads like a checklist. "Is user null? Stop. Is user inactive? Stop. Okay, grant access."
+* **Flatter Structure:** The indentation level never goes deeper than 1 tab. This makes the code visually cleaner.
+* **Focus on the "Happy Path":** The main success logic is at the very end and is not indented, highlighting that it is the primary goal of the function.
