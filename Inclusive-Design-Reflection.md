@@ -1,11 +1,12 @@
 # Reflections
+
 1. How can you adjust your communication style to be more inclusive of neurodivergent users and teammates? I focus on clarity and structure to reduce cognitive load.
 
 Written Follow-ups: After verbal syncs, I send a short bulleted summary so teammates can process the information at their own pace.
 
 Explicit Instructions: I avoid implied meanings or idioms. Instead of saying "Let's touch base," I say "Let's meet at 16:00 to discuss the login bug."
 
-2. What are some common UX or communication pitfalls that might make Focus Bear less accessible or supportive?
+1. What are some common UX or communication pitfalls that might make Focus Bear less accessible or supportive?
 
 "The Wall of Shame": Visualizing gaps in habit tracking (e.g., broken streaks in red) can induce guilt and cause users with ADHD to abandon the app entirely.
 
@@ -13,7 +14,7 @@ Sensory Overload: Unexpected sounds or auto-playing animations during onboarding
 
 Vague Error Messages: Errors like "Something went wrong" cause anxiety. Users need to know exactly what happened and how to fix it.
 
-3. What is one practical change you can make in your work to better support vulnerable populations? As an Automation QA, I will integrate accessibility checks into my test scripts.
+1. What is one practical change you can make in your work to better support vulnerable populations? As an Automation QA, I will integrate accessibility checks into my test scripts.
 
 Action: When writing selectors for buttons or inputs, I will prioritize using aria-labels (used by screen readers) instead of generic CSS classes. This ensures we are verifying the app is ready for assistive technology.
 
@@ -23,8 +24,8 @@ For now I did not use Focus Bear app so far, but I think it could be:
 Implement a "Forgiveness Mode" or change the tone of Error Messages.
 For example if current message: "Error: You tried to visit a blocked site!" (Red color), change to a softer tone: "Oops, looks like you wanted to focus. This site can wait for now." (Neutral color).
 
-
 # Practice writing a clear, patient, and supportive response to a hypothetical user struggling with executive functioning.
+
 My hypothetical Response:
 
 Hi there,

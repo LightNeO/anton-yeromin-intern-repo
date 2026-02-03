@@ -8,4 +8,3 @@ I contribute to the team's velocity by taking on repetitive regression testing t
 Most of all I'll colaborate with Manual QAs and Devs
 I can improve teamwork by being proactive about feedback rather than waiting for it:
 As I'm just an intern, I should ask alot of questions and be active in communication so that my tasks would be as good as possoble
-

@@ -1,3 +1,5 @@
+# VS Code Productivity Shortcuts
+
 Ctrl + Shoft + P - search for commands/shortcuts
 Ctrl + D - multiselection of words/variables, press several times to select next word
 Alt + Click - mulyicursor

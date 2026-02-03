@@ -10,16 +10,16 @@ Celebrate wins: I share memes or GIFs when a difficult test finally passes.
 
 Support: If a colleague breaks the build, I offer help to fix it privately instead of calling them out publicly.
 
-4. How can you prepare effectively for meetings with supervisors and colleagues?
+1. How can you prepare effectively for meetings with supervisors and colleagues?
 The best would be to review the relevant tickets beforehand and come with a written questions.
 
-5. What would it look like to be proactive during your internship?
+2. What would it look like to be proactive during your internship?
 Even as an intern in automation, I apply my Manual QA experiance by:
 Updating outdated documentation if needed.
 Suggesting tests for "edge cases," not just automating the happy path.
 
-6. How might you follow up with colleagues or supervisors if you need information/action from them?
+3. How might you follow up with colleagues or supervisors if you need information/action from them?
 After ~ 24 Hours: A friendly nudge in the thread ("Just bumping this").
 
-7. What are some things you won't do?
+4. What are some things you won't do?
 Not sure, it all depends on the situation. usually something that goes beyond a friendly work environment

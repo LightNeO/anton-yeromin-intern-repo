@@ -8,7 +8,7 @@ Sanitize Evidence: I remove PII or tokens from screenshots and logs before attac
 
 Git Safety: I strictly check that configuration files with secrets are listed in .gitignore before committing.
 
-2. How should you store, share, and dispose of sensitive information safely?
+1. How should you store, share, and dispose of sensitive information safely?
 
 Store: In local environment variables (.env) or a password manager, never hardcoded in the Python script.
 

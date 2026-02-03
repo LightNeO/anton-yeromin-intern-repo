@@ -6,13 +6,13 @@ Laptop Stand: Since I work on a laptop, I will use a stand to raise the screen t
 
 External Keyboard/Mouse: This allows me to keep my arms at a 90-degree angle while the screen is elevated.
 
-2. What behavioural changes can you implement to improve posture and reduce strain?
+1. What behavioural changes can you implement to improve posture and reduce strain?
 
 The 20-20-20 Rule: To reduce eye strain from reading test logs, every 20 minutes I will look at something 20 feet away for 20 seconds.
 
 "Turtle Neck" Check: I will consciously pull my chin back and lean into the backrest of my chair instead of leaning forward into the screen.
 
-3. How can you remind yourself to maintain good posture and take breaks throughout the day?
+1. How can you remind yourself to maintain good posture and take breaks throughout the day?
 
 Focus Bear Config: I will configure Focus Bear to trigger a mandatory 5-minute stretch break every hour.
 

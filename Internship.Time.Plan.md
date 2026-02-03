@@ -19,10 +19,10 @@
 ## Detailed Weekly Plan
 
 ### Week 1: [DD/MM] – [DD/MM]
+
 * **Mon:** 16:00 – 18:00
 * **Tue:** 16:00 – 18:00
 * **Wed:** 16:00 – 18:00
 * **Thu:** 16:00 – 18:00
 * **Fri:** 16:00 – 18:00
 * *Weekly Total: 10 Hours*
-

@@ -1,6 +1,7 @@
 # User Manual for A ton Yeromin
 
 ## My role
+
     I am working on:
         (Primary Focus) Automating regression tests using Python
         Converting manual test cases into automated scripts
@@ -15,6 +16,7 @@
         Monday – Friday usually from 16:00 to 18:00 (Kyiv Time / GMT+2)
 
 ## How I Work Best
+
     I do my best work when:
         I have a clear "Definition of Done" before I start task
         I have deadlines
@@ -28,6 +30,7 @@
         I have to guess the expected behavior of a feature
 
 ## Communication Style
+
     I prefer messages to be...
         Async: Detailed text is better than a quick call, so I can reference it when I log on(But if I'm online feel free to make a call if needed)
 
@@ -35,6 +38,7 @@
         Discord: @light08936
 
 ## Collaboration & Teamwork
+
     I work best in a team when everyone are on the "same page", sociable, ask questions and look for ways to solve problems/issues together
 
     My biggest pet peeve in teamwork is:
@@ -44,8 +48,8 @@
     If I seem quiet in a meeting, it usually means:
         I am processing the technical information.
 
-
 ## Focus & Productivity
+
     I stay focused by:
         Using Focus Bear to block distractions
         Working in a strict timebox.
@@ -57,6 +61,7 @@
         Quick responses to my questions. And cookies
 
 ## Feedback & Growth
+
     I like feedback to be:
         Direct and specific. If my code is inefficient, show me some correct example
         Written. I like to have a record of feedback to study later.
@@ -68,6 +73,7 @@
         Acknowledge that I am learning the tool (Python), but I know the trade (QA).
 
 ## Fun Facts & Quirks
+
     One thing people often misunderstand about me is:
         That "Intern" means "New to the industry." I actually have significant experience as a Manual QA Engineer. So if you need some help in Manual tasks, just ping me.
 
