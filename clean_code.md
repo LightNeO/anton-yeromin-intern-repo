@@ -47,7 +47,7 @@ def calc(l):
     return t
 ```
 
-### The Clean Code 
+### The Clean Code
 1. **Descriptive Names:** `total`, `price`, `discount` clearly explain what each variable does.
 2. **Named Constants:** `DISCOUNT_RATE` shows intent instead of magic `0.2`.
 3. **Type Hints:** We know we're working with a list of floats.
@@ -61,10 +61,10 @@ DISCOUNT_THRESHOLD = 100
 def calculate_total_price(prices: list[float]) -> float:
     """
     Calculate total price with a discount applied to items above threshold.
-    
+
     Args:
         prices: List of item prices (floats)
-    
+
     Returns:
         Total price after applying discounts
     """
@@ -229,7 +229,7 @@ def process_order(u, type, qty, price):
             if price > 0:
                 if type == 1: # Standard
                     # magic number 10
-                    if qty > 10: 
+                    if qty > 10:
                         d = 0.1 # discount
                     else:
                         d = 0
@@ -242,7 +242,7 @@ def process_order(u, type, qty, price):
                     else:
                         d = 0
                     # magic number 20 for shipping
-                    total = (price * qty) - ((price * qty) * d) + 20 
+                    total = (price * qty) - ((price * qty) * d) + 20
                     print(f"User {u}: Total is {total}")
             else:
                 print("Error: Invalid price")
@@ -287,7 +287,7 @@ def process_order(user_name, order_type, quantity, price):
     # Handle Shipping
     if order_type == ORDER_TYPE_EXPRESS:
         final_total += EXPRESS_SHIPPING_COST
-    
+
     # 4. Readable Output
     print(f"User {user_name}: Total is {final_total}")
 ```
