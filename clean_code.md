@@ -179,3 +179,44 @@ Comments are for **Context** and **Why**, not for explaining syntax.
 * **Stating the Obvious:** `i = i + 1  # Increment i` is noise. The code already says that.
 * **Excusing Bad Code:** If you feel the need to write ` # Sorry this is messy, it parses the date`, you should just rewrite the code to be cleaner (or extract it into a function named `parse_date()`).
 * **Outdated Comments:** The only thing worse than no comments is a *lying* comment. If you change the code, you must update the comment. If you can't maintain both, delete the comment.
+
+# 45
+
+## 1. What was the issue with the original code?
+The original code assumed the "Happy Path" (that the user will always provide perfect data). It failed to handle:
+* **Edge Cases:** Passing an empty list caused a crash (`ZeroDivisionError`).
+* **Invalid Types:** Passing strings instead of numbers caused a crash (`TypeError`).
+* **Silent Failures:** It returned raw results without context, making it hard to debug if the output was "Infinity" or "NaN".
+
+## 2. How does handling errors improve reliability?
+* **Stability:** The application (or test suite) doesn't crash completely just because of one bad data point. It catches the error, logs it, and moves on or stops gracefully.
+* **Debuggability:** Instead of a generic Python traceback, I get a clear, custom error message ("Error: Cannot calculate average of an empty list").
+* **Trust:** Robust code tells the user *why* something failed, rather than just dying, which builds trust in the automation framework.
+
+### Bad example
+```Python
+def calculate_average(numbers):
+    return sum(numbers) / len(numbers)
+```
+### Refactored example
+```Python
+from typing import List, Union
+
+def calculate_average(numbers: List[Union[int, float]]) -> float:
+    # 1. Edge Case: Empty List (Guard Clause)
+    if not numbers:
+        print("Warning: Received empty list. Returning 0.")
+        return 0.0
+
+    # 2. Type Validation
+    if not isinstance(numbers, list):
+        raise ValueError(f"Expected a list, got {type(numbers)}")
+
+    try:
+        total = sum(numbers)
+        return total / len(numbers)
+    except TypeError:
+        # 3. Handle Invalid Content (e.g., list contains strings)
+        print("Error: List contains non-numeric values.")
+        return 0.0
+```
