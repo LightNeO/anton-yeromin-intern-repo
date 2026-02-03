@@ -1,1 +1,1 @@
-# This is a tst of the splling cheker
+# This is a test of the spelling cheker
