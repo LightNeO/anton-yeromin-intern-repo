@@ -1,0 +1,26 @@
+name: Quality Checks
+
+# Trigger: Run on any PR or push to main
+on: [push, pull_request]
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 1. Markdown Linter (Checks for bolding, headers, lists)
+      - name: Lint Markdown Files
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: "**/*.md"
+
+      # 2. Spell Checker (Checks for typos in code and comments)
+      - name: Check Spelling
+        uses: streetsidesoftware/cspell-action@v6
+        with:
+          # Only check markdown files for now to reduce noise
+          files: "**/*.md" 
+          # Strict mode: fail the build if typos are found
+          strict: true
