@@ -28,8 +28,7 @@
 
 ## 2. Practical Example: Messy vs. Clean
 
-### ❌ The Messy Code (Bad)
-*Why is this difficult to read?*
+### The Messy Code
 1.  **Meaningless Names:** `d`, `l`, `c` tell us nothing.
 2.  **Magic Numbers:** What is `0.2`? Tax? Discount? Tip?
 3.  **No Type Hinting:** We don't know if `l` is a list of numbers or objects.
@@ -48,8 +47,7 @@ def calc(l):
     return t
 ```
 
-### ✅ The Clean Code (Good)
-*Why is this much better?*
+### The Clean Code 
 1. **Descriptive Names:** `total`, `price`, `discount` clearly explain what each variable does.
 2. **Named Constants:** `DISCOUNT_RATE` shows intent instead of magic `0.2`.
 3. **Type Hints:** We know we're working with a list of floats.
@@ -96,8 +94,7 @@ I reviewed the Airbnb JavaScript Style Guide, which is considered the "Gold Stan
 I'm using Flake8 and Black formater for VS Code, so it detects regular issue in writing a code: wrong imports, wrong variable namings, whitespaces etc. And also Alt+Shift+T for marmating make thing easier
 
 ## 4. Did formatting the code make it easier to read?
-**Yes, immediately.**
-I used **Black** (the Python formatter). It automatically:
+I used Black formatter. It automatically:
 * Fixed all my indentation.
 * Standardized string quotes (changed `'` to `"`).
 * Broke long lines into readable chunks.
@@ -220,3 +217,93 @@ def calculate_average(numbers: List[Union[int, float]]) -> float:
         print("Error: List contains non-numeric values.")
         return 0.0
 ```
+
+# 46
+
+## Smally Code Example
+```Python
+def process_order(u, type, qty, price):
+    # u is user, type 1 is standard, 2 is express
+    if u:
+        if qty > 0:
+            if price > 0:
+                if type == 1: # Standard
+                    # magic number 10
+                    if qty > 10: 
+                        d = 0.1 # discount
+                    else:
+                        d = 0
+                    total = (price * qty) - ((price * qty) * d)
+                    print(f"User {u}: Total is {total}")
+                elif type == 2: # Express
+                    # duplicate logic for discount
+                    if qty > 10:
+                        d = 0.1
+                    else:
+                        d = 0
+                    # magic number 20 for shipping
+                    total = (price * qty) - ((price * qty) * d) + 20 
+                    print(f"User {u}: Total is {total}")
+            else:
+                print("Error: Invalid price")
+        else:
+            print("Error: Invalid qty")
+    else:
+        print("Error: No user")
+```
+
+## Refactored example
+```Python
+# 1. Eliminate Magic Numbers with Constants
+ORDER_TYPE_STANDARD = 1
+ORDER_TYPE_EXPRESS = 2
+BULK_QTY_THRESHOLD = 10
+BULK_DISCOUNT_RATE = 0.10
+EXPRESS_SHIPPING_COST = 20.0
+
+def calculate_discount(quantity, price):
+    """Calculates discount based on bulk quantity rules."""
+    if quantity > BULK_QTY_THRESHOLD:
+        return (price * quantity) * BULK_DISCOUNT_RATE
+    return 0.0
+
+def process_order(user_name, order_type, quantity, price):
+    # 2. Use Guard Clauses to remove Deep Nesting
+    if not user_name:
+        print("Error: No user")
+        return
+    if quantity <= 0:
+        print("Error: Invalid quantity")
+        return
+    if price <= 0:
+        print("Error: Invalid price")
+        return
+
+    # 3. Reuse logic (Dry Principle)
+    base_cost = price * quantity
+    discount = calculate_discount(quantity, price)
+    final_total = base_cost - discount
+
+    # Handle Shipping
+    if order_type == ORDER_TYPE_EXPRESS:
+        final_total += EXPRESS_SHIPPING_COST
+    
+    # 4. Readable Output
+    print(f"User {user_name}: Total is {final_total}")
+```
+
+## 1. What code smells did you find in your code?
+* **Magic Numbers:** The code used integers like `1` and `2` for order types and `0.2` for tax rates. I had to guess what they meant.
+* **Deeply Nested Conditionals (Arrow Code):** The logic was buried 4 levels deep inside `if/else` blocks, making it hard to track the success path.
+* **Long Function:** A single function handled validation, calculation, database updates, and email notifications.
+* **Duplicate Code:** The logic for calculating the final price was copied in two different places (for standard vs. express shipping).
+* **Inconsistent Naming:** Variables like `p`, `t`, and `u` were meaningless.
+
+## 2. How did refactoring improve the readability and maintainability?
+* **Self-Documenting Code:** Replacing `if type == 2` with `if order_type == EXPRESS_SHIPPING` makes the code read like English. I don't need to ask a senior developer what "2" means.
+* **Reduced Cognitive Load:** Breaking the long function into `calculate_total()` and `send_email()` allows me to focus on one task at a time. I don't need to hold the entire system's logic in my head to fix a typo in the email subject.
+* **Flat Structure:** Using **Guard Clauses** eliminated the deep nesting. The code now looks like a simple checklist rather than a pyramid.
+
+## 3. How can avoiding code smells make future debugging easier?
+* **Isolation of Errors:** If the tax calculation is wrong, I now know exactly where to look (the `calculate_tax` function) rather than searching through a 100-line script.
+* **Single Source of Truth:** By removing duplicate code, I ensure that if I need to change the tax rate, I only change it in one place. This prevents bugs where one part of the system uses the new rate and another uses the old rate.
