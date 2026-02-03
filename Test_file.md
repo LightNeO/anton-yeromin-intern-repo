@@ -1,1 +1,1 @@
-This is a tst of the splling cheker
+# This is a tst of the splling cheker
