@@ -28,3 +28,5 @@ We cannot "Inspect Element" like in a web browser. Instead, we use:
 * **Modern App Architecture (UWP):** `start()` often fails because the process ID changes immediately after launch. I can use the "Launch & Connect" pattern to fix this.
 * **Localization:** Window titles change based on language (e.g., "Calculator" vs. "Калькулятор"). Using Regular Expressions (`title_re`) helps solve this.
 * **Timing Issues:** Elements don't appear instantly. Explicit waits (like `.wait('visible', timeout=10)`) are mandatory to prevent `ElementNotFoundError`.
+
+## My test project for pywinauto : "<https://github.com/LightNeO/pywinauto_basic_project>"
