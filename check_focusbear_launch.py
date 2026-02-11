@@ -1,38 +1,49 @@
-import time
 import os
+import time
 from pywinauto.application import Application
 from pywinauto import Desktop
+from pywinauto import timings
 
 APP_PATH = r"C:\Program Files (x86)\Focus Bear\Focus Bear.exe"
+timings.Timings.window_find_timeout = 10
+
+
+def click_input_with_retry(element, max_retries=3, wait_time=2):
+    for attempt in range(1, max_retries + 1):
+        try:
+            print(f"Attempt {attempt} to click...")
+            element.click_input()
+            return True
+        except Exception as e:
+            print(f"Click failed: {e}")
+            if attempt < max_retries:
+                print(f"Waiting {wait_time}s before retrying...")
+                time.sleep(wait_time)
+            else:
+                print("❌ Max retries reached. Failing test.")
+                raise
 
 
 def main():
     print("=== Start ===")
 
-    print("🔪 Killing old Focus Bear processes...")
+    print("Killing old Focus Bear processes...")
     os.system('taskkill /f /im "Focus Bear.exe" >nul 2>&1')
-    time.sleep(2)  # Даємо час на закриття
 
     os.environ["WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS"] = "--remote-debugging-port=9222"
 
     print("🚀 Launching app with debug port 9222...")
 
-    # Важливо: Програма має запускатися ПІСЛЯ встановлення змінної
-    # Також переконайся, що Focus Bear повністю закритий перед запуском!
     app = Application(backend="uia").start(APP_PATH)
-
-    ####
 
     print("Waiting for the app to launch...")
     main_window = app.window(title_re="Focus Bear")
-    main_window.wait("visible", timeout=15)
-
+    # main_window.wait("visible", timeout=15) - this was replased with a click_input_with_retry function
     print("Clicking 'Continue' button...")
-    main_window.child_window(
+    continue_btn = main_window.child_window(
         auto_id="buttonContinueText", control_type="Text"
-    ).click_input()
-
-    time.sleep(2)
+    )
+    click_input_with_retry(continue_btn)
 
     print("Opening System Tray...")
     desktop = Desktop(backend="uia")
@@ -41,8 +52,6 @@ def main():
     chevron = taskbar.child_window(title="Show Hidden Icons", control_type="Button")
     chevron.click_input()
 
-    time.sleep(10)
-
     overflow_window = desktop.window(class_name="TopLevelWindowForOverflowXamlIsland")
 
     print("Clicking Tray Icon...")
@@ -50,7 +59,6 @@ def main():
     tray_icon.click_input()
 
     print("Waiting for menu to appear...")
-    time.sleep(2)
 
     menu_window = desktop.window(
         title="Focus Bear", control_type="Window", found_index=0
